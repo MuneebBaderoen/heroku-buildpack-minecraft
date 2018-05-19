@@ -177,7 +177,7 @@ public class App{
      */
     public static void main(String[] args) {
         App app = new App();
-        System.out.println("Starting directory replication")
+        System.out.println("Starting directory replication");
         Connection conn = app.connect(args[0]);
         switch (args[1]) {
             case "drop":
