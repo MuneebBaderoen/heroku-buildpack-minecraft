@@ -17,7 +17,7 @@ import org.postgresql.largeobject.LargeObjectManager;
  *
  * @author postgresqltutorial.com
  */
-public class App{
+public class App {
 
     /**
      * Connect to the PostgreSQL database
@@ -176,8 +176,9 @@ public class App{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        App app = new App();
         System.out.println("Starting directory replication");
+        System.out.println(args);
+        App app = new App();
         Connection conn = null;
         try {
             conn = app.connect(args[0]);
