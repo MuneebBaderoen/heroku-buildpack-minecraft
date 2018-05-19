@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 
-javac -classpath postgresql-42.2.2.jar:. App.java
-
 if [ -d world ]; then
     java -classpath postgresql-42.2.2.jar:. App $DATABASE_URL persist
 else
-    mkdir -p world
-    cd world
     java -classpath postgresql-42.2.2.jar:. App $DATABASE_URL restore
-    cd ..
 fi
 
