@@ -177,7 +177,6 @@ public class App {
      */
     public static void main(String[] args) {
         System.out.println("Starting directory replication");
-        System.out.println(args);
         App app = new App();
         Connection conn = null;
         try {
