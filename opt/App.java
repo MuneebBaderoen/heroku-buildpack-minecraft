@@ -177,8 +177,9 @@ public class App{
      */
     public static void main(String[] args) {
         App app = new App();
-        Connection conn = app.connect(System.getenv("DATABASE_URL"));
-        switch (args[0]) {
+        System.out.println("Starting directory replication")
+        Connection conn = app.connect(args[0]);
+        switch (args[1]) {
             case "drop":
                 System.out.println("============== Dropping =============");
                 app.dropTable(conn);

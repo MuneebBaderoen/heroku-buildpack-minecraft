@@ -17,7 +17,7 @@ ngrok_pid=$!
 # Do an inline sync first, then start the background job
 echo "Starting sync..."
 bin/sync
-eval "while true; do sleep ${AWS_SYNC_INTERVAL:-60}; bin/sync; done &"
+eval "while true; do sleep ${AWS_SYNC_INTERVAL:-60}; bin/sync $DATABASE_URL; done &"
 sync_pid=$!
 
 # create server config
