@@ -1,7 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env bash
 
-DATABASE_URL = "postgres://ckkrpslkgcshwr:7b311ec01d48e53ea34cc4ea1f82948376f12af5cebf7988d84b148cf3e213ef@ec2-54-75-244-248.eu-west-1.compute.amazonaws.com:5432/d1gavg31t0f9th"
+javac -classpath postgresql-42.2.2.jar:. App.java
 
-import psycopg2
+if [ -d world ]; then
+    java -classpath postgresql-42.2.2.jar:. App $DATABASE_URL persist
+else
+    mkdir -p world
+    cd world
+    java -classpath postgresql-42.2.2.jar:. App $DATABASE_URL restore
+    cd ..
+fi
 
-cursor = psycopg2.connect(DATABASE_URL)
