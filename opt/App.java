@@ -202,7 +202,6 @@ public class App{
                 System.out.println("No arguments specified");
                 break;
         }
-        conn.close();
     }
 }
 
