@@ -67,23 +67,23 @@ curl -o minecraft.jar -s -L $minecraft_url
 mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
 
-if [ -n "${MINECRAFT_EULA:-""}" ]; then
-  echo -n "-----> Accepting Minecraft EULA... "
-  echo "eula=true" >> $BUILD_DIR/eula.txt
-  echo "done"
-fi
+# if [ -n "${MINECRAFT_EULA:-""}" ]; then
+#   echo -n "-----> Accepting Minecraft EULA... "
+#   echo "eula=true" >> $BUILD_DIR/eula.txt
+#   echo "done"
+# fi
 
-echo -n "-----> Copying scripts " | indent
+# echo -n "-----> Copying scripts " | indent
 
-mkdir -p $BUILD_DIR/bin
-[ ! -f $BUILD_DIR/minecraft ]   && cp $OPT_DIR/minecraft $BUILD_DIR/bin
-[ ! -f $BUILD_DIR/sync ]        && cp $OPT_DIR/sync $BUILD_DIR/bin
-[ ! -f $BUILD_DIR/index.rhtml ] && cp $OPT_DIR/index.rhtml $BUILD_DIR
-if [ ! -f $BUILD_DIR/App.java ]; then
-  cp $OPT_DIR/App.java $BUILD_DIR/bin
-  cd $BUILD_DIR/bin
-  javac App.java
-fi
+# mkdir -p $BUILD_DIR/bin
+# [ ! -f $BUILD_DIR/minecraft ]   && cp $OPT_DIR/minecraft $BUILD_DIR/bin
+# [ ! -f $BUILD_DIR/sync ]        && cp $OPT_DIR/sync $BUILD_DIR/bin
+# [ ! -f $BUILD_DIR/index.rhtml ] && cp $OPT_DIR/index.rhtml $BUILD_DIR
+# if [ ! -f $BUILD_DIR/App.java ]; then
+#   cp $OPT_DIR/App.java $BUILD_DIR/bin
+#   cd $BUILD_DIR/bin
+#   javac App.java
+# fi
 
-chmod +x $BUILD_DIR/bin/minecraft
-chmod +x $BUILD_DIR/bin/sync
+# chmod +x $BUILD_DIR/bin/minecraft
+# chmod +x $BUILD_DIR/bin/sync
