@@ -11,8 +11,6 @@ import java.nio.file.Paths;
 import java.io.*;
 
 import org.postgresql.PGConnection;
-import org.postgresql.largeobject.LargeObject;
-import org.postgresql.largeobject.LargeObjectManager;
 /**
  *
  * @author postgresqltutorial.com
@@ -107,9 +105,6 @@ public class App {
         try {
             // All LargeObject API calls must be within a transaction block
             conn.setAutoCommit(false);
-
-            // Get the Large Object Manager to perform operations with
-            LargeObjectManager lobj = ((org.postgresql.PGConnection)conn).getLargeObjectAPI();
 
             PreparedStatement ps = conn.prepareStatement("SELECT file_name, file_contents FROM world_files");
             ResultSet rs = ps.executeQuery();
