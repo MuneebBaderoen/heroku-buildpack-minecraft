@@ -39,6 +39,9 @@ apt-get $APT_OPTIONS -y --force-yes -d install --reinstall s3cmd | indent
 echo "-----> Installing screen... "
 apt-get $APT_OPTIONS -y --force-yes -d install --reinstall screen | indent
 mkdir -p $BUILD_DIR/.apt/var/run/screen
+echo "-----> Installing python setuptools and pip... "
+apt-get $APT_OPTIONS -y --force-yes -d install --reinstall python-setuptools | indent
+easy_install pip
 
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh

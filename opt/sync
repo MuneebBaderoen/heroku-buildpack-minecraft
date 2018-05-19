@@ -1,18 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python
 
-if [ -n "$AWS_BUCKET" ]; then
-  cat << EOF > .s3cfg
-[default]
-access_key = ${AWS_ACCESS_KEY}
-secret_key = ${AWS_SECRET_KEY}
-EOF
-  if [ -d world ]; then
-    s3cmd sync world/ s3://${AWS_BUCKET}/world/
-  else
-    mkdir -p world
-    cd world
-    s3cmd get --recursive s3://${AWS_BUCKET}/world/
-    cd ..
-  fi
-  rm .s3cfg
-fi
+DATABASE_URL = "postgres://ckkrpslkgcshwr:7b311ec01d48e53ea34cc4ea1f82948376f12af5cebf7988d84b148cf3e213ef@ec2-54-75-244-248.eu-west-1.compute.amazonaws.com:5432/d1gavg31t0f9th"
+
+import psycopg2
+
+cursor = psycopg2.connect(DATABASE_URL)
