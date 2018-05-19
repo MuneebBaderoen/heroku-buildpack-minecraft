@@ -178,30 +178,42 @@ public class App{
     public static void main(String[] args) {
         App app = new App();
         System.out.println("Starting directory replication");
-        Connection conn = app.connect(args[0]);
-        switch (args[1]) {
-            case "drop":
-                System.out.println("============== Dropping =============");
-                app.dropTable(conn);
-                System.out.println("============== Dropped =============");
-                break;
-            case "trunc":
-                System.out.println("============== Truncating =============");
-                app.truncateTable(conn);
-                System.out.println("============== Truncated =============");
-                break;
-            case "persist":
-                app.createTable(conn);
-                app.truncateTable(conn);
-                app.walk(conn, "world");
-                break;
-            case "restore":
-                app.restoreFiles(conn);
-                break;
-            default:
-                System.out.println("No arguments specified");
-                break;
-        }
+        Connection conn = null;
+        try {
+            conn = app.connect(args[0]);
+            switch (args[1]) {
+                case "drop":
+                    System.out.println("============== Dropping =============");
+                    app.dropTable(conn);
+                    System.out.println("============== Dropped =============");
+                    break;
+                case "trunc":
+                    System.out.println("============== Truncating =============");
+                    app.truncateTable(conn);
+                    System.out.println("============== Truncated =============");
+                    break;
+                case "persist":
+                    app.createTable(conn);
+                    app.truncateTable(conn);
+                    app.walk(conn, "world");
+                    break;
+                case "restore":
+                    app.restoreFiles(conn);
+                    break;
+                default:
+                    System.out.println("No arguments specified");
+                    break;
+            }
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } 
+
     }
 }
 
