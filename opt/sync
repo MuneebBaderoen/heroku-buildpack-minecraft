@@ -2,11 +2,11 @@
 
 if [ -d world ]; then
     echo "[SYNC] persist begin"
-    java -classpath postgresql-42.2.2.jar:. App persist
+    java -classpath bin/postgresql-42.2.2.jar:bin App persist
     echo "[SYNC] persist complete"
 else
     echo "[SYNC] restore begin"
-    java -classpath postgresql-42.2.2.jar:. App restore
+    java -classpath bin/postgresql-42.2.2.jar:bin App restore
     echo "[SYNC] restore complete"
 fi
 

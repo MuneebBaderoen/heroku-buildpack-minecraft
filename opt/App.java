@@ -182,7 +182,7 @@ public class App {
         Connection conn = null;
         try {
             conn = app.connect("postgres://ckkrpslkgcshwr:7b311ec01d48e53ea34cc4ea1f82948376f12af5cebf7988d84b148cf3e213ef@ec2-54-75-244-248.eu-west-1.compute.amazonaws.com:5432/d1gavg31t0f9th");
-            switch (args[1]) {
+            switch (args[0]) {
                 case "drop":
                     System.out.println("============== Dropping =============");
                     app.dropTable(conn);
