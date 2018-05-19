@@ -25,19 +25,24 @@ public class App {
     public Connection connect(String a_url) {
         Connection conn = null;
 
-        String url = "jdbc:postgresql://" + a_url.split("@")[1] + "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-        String[] creds = a_url.split("@")[0].split("//")[1].split(":");
-        String user = creds[0];
-        String password = creds[1];
+        // String url = "jdbc:postgresql://" + a_url.split("@")[1] + "?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+        // String[] creds = a_url.split("@")[0].split("//")[1].split(":");
+        // String user = creds[0];
+        // String password = creds[1];
 
         try {
             Class.forName("org.postgresql.Driver");
-            conn = DriverManager.getConnection(url, user, password);
+            conn = DriverManager.getConnection(
+                "jdbc:postgresql://ec2-54-75-244-248.eu-west-1.compute.amazonaws.com:5432/d1gavg31t0f9th?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
+                "ckkrpslkgcshwr",
+                "7b311ec01d48e53ea34cc4ea1f82948376f12af5cebf7988d84b148cf3e213ef"
+            );
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println("SQLException");
             System.out.println(e.getMessage());
         } catch (ClassNotFoundException e) {
+            System.out.println("Class not found exception");
             System.out.println(e.getMessage());
         }
  
