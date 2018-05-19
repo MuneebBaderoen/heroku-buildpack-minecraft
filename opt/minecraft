@@ -51,5 +51,5 @@ eval "ruby -rwebrick -e'WEBrick::HTTPServer.new(:BindAddress => \"0.0.0.0\", :Po
 
 # Do an inline sync first, then start the background job
 echo "Starting sync..."
-bin/sync $DATABASE_URL
-eval "while true; do sleep ${AWS_SYNC_INTERVAL:-30}; bin/sync $DATABASE_URL; done"
+bin/sync
+eval "while true; do sleep ${AWS_SYNC_INTERVAL:-30}; bin/sync; done"
