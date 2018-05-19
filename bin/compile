@@ -81,9 +81,9 @@ echo -n "-----> Copying scripts "
 if [ ! -f $BUILD_DIR/App.java ]; then
   cp cp $OPT_DIR/App.java $BUILD_DIR/bin
   cp cp $OPT_DIR/postgresql-42.2.2.jar $BUILD_DIR/bin
-  pushd $BUILD_DIR
-    javac -classpath postgresql-42.2.2.jar:. App.java
-  popd
+  # pushd $BUILD_DIR/bin
+  #   javac -classpath postgresql-42.2.2.jar:. App.java
+  # popd
 fi
 
 chmod +x $BUILD_DIR/bin/minecraft
