@@ -73,8 +73,7 @@ if [ -n "${MINECRAFT_EULA:-""}" ]; then
   echo "done"
 fi
 
-echo -n "-----> Copying scripts "
-echo -n "========================"
+echo -n "-----> Copying scripts " | indent
 
 mkdir -p $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/minecraft ]   && cp $OPT_DIR/minecraft $BUILD_DIR/bin
@@ -83,9 +82,9 @@ mkdir -p $BUILD_DIR/bin
 if [ ! -f $BUILD_DIR/App.java ]; then
   cp $OPT_DIR/App.java $BUILD_DIR/bin
   cp $OPT_DIR/postgresql-42.2.2.jar $BUILD_DIR/bin
-  # pushd $BUILD_DIR/bin
-  #   javac -classpath postgresql-42.2.2.jar:. App.java
-  # popd
+  pushd $BUILD_DIR/bin
+    javac -classpath postgresql-42.2.2.jar:. App.java
+  popd
 fi
 
 chmod +x $BUILD_DIR/bin/minecraft
