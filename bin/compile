@@ -81,4 +81,4 @@ mkdir -p $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/index.rhtml ] && cp $OPT_DIR/index.rhtml $BUILD_DIR
 
 chmod +x $BUILD_DIR/bin/minecraft
-chmod +x $BUILD_DIR/bin/sync
+# chmod +x $BUILD_DIR/bin/sync
