@@ -74,6 +74,7 @@ if [ -n "${MINECRAFT_EULA:-""}" ]; then
 fi
 
 echo -n "-----> Installing bundler... "
+chown -R $(whoami) /var/lib/gems/2.3.0
 gem install bundler
 
 # echo -n "-----> Copying scripts " | indent
